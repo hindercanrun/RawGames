@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:mx="http://schemas.microsoft.com/appx/2013/xbox/manifest" IgnorableNamespaces="mx">
+  <Identity Name="Halo5-Guardians" ResourceId="1" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="1.1.7535.11" ProcessorArchitecture="x64" />
+  <Properties>
+    <DisplayName>Halo 5: Guardians</DisplayName>
+    <PublisherDisplayName>343 Industries</PublisherDisplayName>
+    <Logo>StoreLogo.png</Logo>
+    <Description>Halo 5: Guardians</Description>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2</OSMinVersion>
+    <OSMaxVersionTested>6.2</OSMaxVersionTested>
+    <mx:ApplicationEnvironment>title</mx:ApplicationEnvironment>
+    <mx:OSName>era</mx:OSName>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="en-US" />
+    <Resource Language="da-DK" />
+    <Resource Language="de-AT" />
+    <Resource Language="de-CH" />
+    <Resource Language="de-DE" />
+    <Resource Language="en-AE" />
+    <Resource Language="en-AU" />
+    <Resource Language="en-CA" />
+    <Resource Language="en-CZ" />
+    <Resource Language="en-GB" />
+    <Resource Language="en-GR" />
+    <Resource Language="en-HK" />
+    <Resource Language="en-HU" />
+    <Resource Language="en-IE" />
+    <Resource Language="en-IL" />
+    <Resource Language="en-IN" />
+    <Resource Language="en-NZ" />
+    <Resource Language="en-SA" />
+    <Resource Language="en-SG" />
+    <Resource Language="en-SK" />
+    <Resource Language="en-ZA" />
+    <Resource Language="es-AR" />
+    <Resource Language="es-CL" />
+    <Resource Language="es-CO" />
+    <Resource Language="es-ES" />
+    <Resource Language="es-MX" />
+    <Resource Language="fi-FI" />
+    <Resource Language="fr-BE" />
+    <Resource Language="fr-CA" />
+    <Resource Language="fr-CH" />
+    <Resource Language="fr-FR" />
+    <Resource Language="it-IT" />
+    <Resource Language="ja-JP" />
+    <Resource Language="ko-KR" />
+    <Resource Language="nb-NO" />
+    <Resource Language="nl-BE" />
+    <Resource Language="nl-NL" />
+    <Resource Language="pl-PL" />
+    <Resource Language="pt-BR" />
+    <Resource Language="pt-PT" />
+    <Resource Language="ru-RU" />
+    <Resource Language="sv-SE" />
+    <Resource Language="tr-TR" />
+    <Resource Language="zh-CN" />
+    <Resource Language="zh-HK" />
+    <Resource Language="zh-SG" />
+    <Resource Language="zh-TW" />
+  </Resources>
+  <Applications>
+    <!--- 'Id' is in the aumid returned from deploy  -->
+    <!--- 'Executable' must match the .exe produced by the build  -->
+    <!--- 'Id' is in the aumid returned from deploy  -->
+    <!--- 'Executable' must match the .exe produced by the build  -->
+    <!--- 'Id' is in the aumid returned from deploy  -->
+    <!--- 'Executable' must match the .exe produced by the build  -->
+    <!--- 'Id' is in the aumid returned from deploy  -->
+    <!--- 'Executable' must match the .exe produced by the build  -->
+    <!--- 'Id' is in the aumid returned from deploy  -->
+    <!--- 'Executable' must match the .exe produced by the build  -->
+    <Application Id="OsirisRelease" Executable="game_Release.exe" EntryPoint="Osiris.App">
+      <!--- all fields except DisplayName not yet implemented -->
+      <VisualElements DisplayName="Halo 5: Guardians" Logo="Logo_release.png" SmallLogo="SmallLogo_release.png" Description="Halo 5: Guardians" ForegroundText="light" BackgroundColor="#000040">
+        <DefaultTile WideLogo="WideLogo_release.png" />
+        <SplashScreen Image="SplashScreen_release.png" />
+      </VisualElements>
+      <mx:Ratings Category="game">
+        <mx:Rating>CERO:D</mx:Rating>
+        <mx:Rating>COB-AU:M</mx:Rating>
+        <mx:Rating>CSRR:R</mx:Rating>
+        <mx:Rating>DJCTQ:14</mx:Rating>
+        <mx:Rating>ESRB:T</mx:Rating>
+        <mx:Rating>FPB:13</mx:Rating>
+        <mx:Rating>GRB:15</mx:Rating>
+        <mx:Rating>OFLC-NZ:R13</mx:Rating>
+        <mx:Rating>PCBP:16</mx:Rating>
+        <mx:Rating>PEGI:16</mx:Rating>
+        <mx:Rating>PEGI-PT:16</mx:Rating>
+        <mx:Rating>USK:16</mx:Rating>
+      </mx:Ratings>
+      <Extensions>
+        <!-- 7th Core and GPU -->
+        <mx:Extension Category="xbox.system.resources">
+          <mx:XboxSystemResources resourceConfiguration="extended">
+            <mx:GpuAvailability>variable</mx:GpuAvailability>
+          </mx:XboxSystemResources>
+        </mx:Extension>
+        <mx:Extension Category="xbox.live">
+          <mx:XboxLive TitleId="0D174C79" PrimaryServiceConfigId="1370999b-fca2-4c53-8ec5-73493bcb67e5" />
+        </mx:Extension>
+        <!--  See XboxLveServicesWrappLib::PartyChat, PartyChatUtilities  -->
+        <mx:Extension Category="xbox.multiplayer">
+          <mx:XboxMultiplayer CanSuppressPartyChat="true" />
+        </mx:Extension>
+        <mx:Extension Category="windows.xbox.networking">
+          <mx:XboxNetworkingManifest>
+            <mx:SocketDescriptions>
+              <mx:SocketDescription Name="GameSocketUdp" SecureIpProtocol="Udp" BoundPort="12343">
+                <mx:AllowedUsages>
+                  <mx:SecureDeviceSocketUsage Type="Initiate" />
+                  <mx:SecureDeviceSocketUsage Type="SendGameData" />
+                  <mx:SecureDeviceSocketUsage Type="ReceiveGameData" />
+                  <mx:SecureDeviceSocketUsage Type="Accept" />
+                  <mx:SecureDeviceSocketUsage Type="SendChat" />
+                  <mx:SecureDeviceSocketUsage Type="ReceiveChat" />
+                </mx:AllowedUsages>
+              </mx:SocketDescription>
+              <mx:SocketDescription Name="GameSocketRawUdp" SecureIpProtocol="Udp" BoundPort="1343">
+                <mx:AllowedUsages>
+                  <mx:SecureDeviceSocketUsage Type="Initiate" />
+                  <mx:SecureDeviceSocketUsage Type="SendInsecure" />
+                  <mx:SecureDeviceSocketUsage Type="ReceiveInsecure" />
+                  <mx:SecureDeviceSocketUsage Type="Accept" />
+                </mx:AllowedUsages>
+              </mx:SocketDescription>
+              <mx:SocketDescription Name="GameSocketTcp" SecureIpProtocol="Tcp" BoundPort="23">
+                <mx:AllowedUsages>
+                  <mx:SecureDeviceSocketUsage Type="Accept" />
+                  <mx:SecureDeviceSocketUsage Type="Initiate" />
+                </mx:AllowedUsages>
+              </mx:SocketDescription>
+              <mx:SocketDescription Name="HavokScriptDebugServer" SecureIpProtocol="Tcp" BoundPort="27725">
+                <mx:AllowedUsages>
+                  <mx:SecureDeviceSocketUsage Type="Accept" />
+                  <mx:SecureDeviceSocketUsage Type="Initiate" />
+                </mx:AllowedUsages>
+              </mx:SocketDescription>
+              <mx:SocketDescription Name="ToolsSocketTcpRemoteCommand" SecureIpProtocol="Tcp" BoundPort="34343">
+                <mx:AllowedUsages>
+                  <mx:SecureDeviceSocketUsage Type="Accept" />
+                  <mx:SecureDeviceSocketUsage Type="Initiate" />
+                </mx:AllowedUsages>
+              </mx:SocketDescription>
+            </mx:SocketDescriptions>
+            <mx:SecureDeviceAssociationTemplates>
+              <mx:SecureDeviceAssociationTemplate Name="GameTrafficUdp" InitiatorSocketDescription="GameSocketUdp" AcceptorSocketDescription="GameSocketUdp" MultiplayerSessionRequirement="None">
+                <mx:AllowedUsages>
+                  <mx:SecureDeviceAssociationUsage Type="Default" />
+                </mx:AllowedUsages>
+              </mx:SecureDeviceAssociationTemplate>
+              <mx:SecureDeviceAssociationTemplate Name="GameTrafficRawUdp" InitiatorSocketDescription="GameSocketRawUdp" AcceptorSocketDescription="GameSocketRawUdp" MultiplayerSessionRequirement="None">
+                <mx:AllowedUsages>
+                  <mx:SecureDeviceAssociationUsage Type="Default" />
+                </mx:AllowedUsages>
+              </mx:SecureDeviceAssociationTemplate>
+              <mx:SecureDeviceAssociationTemplate Name="GameTrafficTcp" InitiatorSocketDescription="GameSocketTcp" AcceptorSocketDescription="GameSocketTcp" MultiplayerSessionRequirement="None">
+                <mx:AllowedUsages>
+                  <mx:SecureDeviceAssociationUsage Type="Default" />
+                </mx:AllowedUsages>
+              </mx:SecureDeviceAssociationTemplate>
+              <mx:SecureDeviceAssociationTemplate Name="HksDebugTraffic" InitiatorSocketDescription="HavokScriptDebugServer" AcceptorSocketDescription="HavokScriptDebugServer" MultiplayerSessionRequirement="None">
+                <mx:AllowedUsages>
+                  <mx:SecureDeviceAssociationUsage Type="Default" />
+                </mx:AllowedUsages>
+              </mx:SecureDeviceAssociationTemplate>
+              <mx:SecureDeviceAssociationTemplate Name="ToolsTrafficTcpRemoteCommand" InitiatorSocketDescription="ToolsSocketTcpRemoteCommand" AcceptorSocketDescription="ToolsSocketTcpRemoteCommand" MultiplayerSessionRequirement="None">
+                <mx:AllowedUsages>
+                  <mx:SecureDeviceAssociationUsage Type="Default" />
+                </mx:AllowedUsages>
+              </mx:SecureDeviceAssociationTemplate>
+            </mx:SecureDeviceAssociationTemplates>
+          </mx:XboxNetworkingManifest>
+        </mx:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClientServer" />
+    <!-- kinectGamechat The kinectAudio and kinectGamechat apply to audio input from either the Kinect or the headset mic; both are required to do gamechat/audio-in from either the Kinect or headset. 
+         Note Because both kinectAudio and kinectGamechat are required for all title chat, using Kinect or not, virtually all titles should declare both capabilities -->
+    <mx:Capability Name="kinectAudio" />
+    <mx:Capability Name="kinectGamechat" />
+  </Capabilities>
+  <Extensions>
+    <!-- related products; used for licensing checks -->
+    <mx:PackageExtension Category="xbox.store">
+      <mx:XboxStore>
+        <mx:RelatedProducts>
+          <!-- Mercury ("Halo Waypoint | Mercury") -->
+          <mx:RelatedProduct Id="209eaf74-767e-4e61-93f1-d771d62a41d7" />
+        </mx:RelatedProducts>
+      </mx:XboxStore>
+    </mx:PackageExtension>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>Microsoft.Xbox.GameChat.dll</Path>
+        <ActivatableClass ActivatableClassId="Microsoft.Xbox.GameChat.ChatManager" ThreadingModel="both" />
+      </InProcessServer>
+    </Extension>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>Microsoft.Xbox.Services.dll</Path>
+        <ActivatableClass ActivatableClassId="Microsoft.Xbox.Services.XboxLiveContext" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.Xbox.Services.Configuration" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.Xbox.Services.Multiplayer.MultiplayerQualityOfServiceMeasurements" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.Xbox.Services.Multiplayer.MultiplayerSessionReference" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.Xbox.Services.Multiplayer.MultiplayerSessionCapabilities" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.Xbox.Services.Multiplayer.MultiplayerSession" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.Xbox.Services.Matchmaking.CreateMatchTicketResponse" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.Xbox.Services.Matchmaking.HopperStatisticsResponse" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.Xbox.Services.Matchmaking.MatchTicketDetailsResponse" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.Xbox.Services.Presence.PresenceData" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.Xbox.Services.TitleStorage.TitleStorageBlobMetadata" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.Xbox.Services.UserStatistics.RequestedStatistics" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.Xbox.Services.Privacy.PermissionIdConstants" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.Xbox.Services.Social.SocialGroupConstants" ThreadingModel="both" />
+      </InProcessServer>
+    </Extension>
+  </Extensions>
+</Package>

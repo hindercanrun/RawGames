@@ -1,0 +1,186 @@
+--## SERVER
+
+-- *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+-- *_*_*_*_*_*_*_ WORLD 02 PLATEAU START*_*_*_*_*_*_*_*_*
+-- *_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*
+
+
+function startup.PlateauInit()
+	if not editor_mode() then
+		fade_out (0,0,0,0);
+		StartPlateau();
+--		SleepUntil ([| player_living_count() > 0], 1);
+--		blink_breach();
+
+	else
+		print ("in editor, not starting, run StartPlateau to start hub mission");
+	end
+	
+end
+--
+--global var_pelican_ride:number = nil;
+--global var_pelican_load:number = nil;
+--global b_inPelican = false;
+--
+--global W2Hub2:table=
+--	{
+--		name = "after plateau",
+--		
+--	--	breadCrumbs = {FLAGS.fl_hub1, FLAGS.fl_hub2},
+----		description = "World 2 HUB: TEMP, Welcome to Sanghelios: Chief disappeared on a titan. Now the trail's gone cold",
+--		profiles = {STARTING_PROFILES.profile1, STARTING_PROFILES.profile2, STARTING_PROFILES.profile3, STARTING_PROFILES.profile4},
+--		points = POINTS.ps_hub_start,
+--		hub = true,
+--		startFadeOut = "no"
+--
+--	}
+--
+--function StartW2Hub2()
+--	StartMission(W2Hub2);
+--end
+--
+--function W2Hub2.Start()
+--	print ("start w2 hub2");
+--	
+--	--PUT HUB MISSION STUFF HERE
+--	sleep_s (3);
+--	EndCurrentMission();	
+--	
+--end
+--function W2Hub2.End()
+--	print ("world 2 hub2 end");
+--
+--	if not editor_mode() then
+--		print ("NOT vertical slice, continuing to next mission");
+--		sys_LoadTitanAtTsunami();
+--	else
+--		print ("in editor not loading tsunami");
+--	end
+--end
+
+
+
+
+--
+----PLATEAU VERTICAL SLICE FUNCTIONS
+--function W2HubInit()
+--	--faux_mission_objective_text  ("REPORT TO HALSEY");
+--	
+--	--important - place the pelican to plateau
+--	ai_place (AI.sq_plateau_pelican);
+--	
+--	--why do this?
+--	object_create_anew ("dc_plateau_arbiter");
+--	
+--	--important
+--	print("start sleeping device");
+--	SleepUntil([|	device_get_position(OBJECTS.devcon_goto_plateau) >= 0.1 ], 2);
+--
+--	--turn off the device_control
+--	print("device activated, end sleep");
+--	--gmu -- this should really be a blip on the device_control, there should also probably be only 1 device control for picking the mission, not 2
+--	navpoint_track_flag (FLAGS.flag_palmer, false);
+--	device_set_power (OBJECTS.devcon_goto_plateau, 0);
+--
+--	
+--	
+--	--important
+--	Hub1PickMission();
+--	--start countdown
+--	Hub1End();
+--	
+--end
+--
+--function Hub1PickMission()
+--	--OPEN THE PELICAN
+--	object_set_function_variable(OBJECTS.v_pelican_flight, "bay_door", 1, 3);
+--	object_wake_physics(OBJECTS.v_pelican_flight);
+--	
+--	--CREATE THE CONTROL THAT STARTS THE PELICAN ENTRY ANIMATIONS AND THE PLATEAU MISSION
+--	-- turn this into on automatically and turn on the power
+--	object_create_anew ("dc_plateau");
+--	navpoint_track_object (OBJECTS.dc_plateau, true);
+--	
+--	game_save_immediate();
+--	
+--	faux_mission_objective_text  ("BOARD THE PELICAN");
+--	
+--	--gmu -- wait until a player presses X to board the pelican
+--	SleepUntil([|	device_get_position(OBJECTS.dc_plateau) > 0 ], 2);
+--	--turn off the device_control
+--	navpoint_track_object (OBJECTS.dc_plateau, false);
+--	device_set_power (OBJECTS.dc_plateau, 0);
+--end
+--
+----
+----function W2HubPalmerVignetter()
+------	convo_palmer_plateau_overview();
+----
+----	
+----	--sleep_s(5);
+----	CreateThread(world02hub_palmer_tent);
+----end
+--
+--
+----THESE FUNCTIONS CONTROL GETTING INTO THE PELICAN AND THE PELICAN FLIGHT
+---- this function is called by the device controls when activated
+--function W2HubMissionDevice(control:object, activator:object)
+--	print ("Plateau mission picked");
+--	
+--end
+--
+----
+--function Hub1End()
+--	print ("counting down to start the mission");
+--	
+--	
+--		
+--	CreateThread(audio_pelican_ride_startup);		-- pelican ride startup sfx
+--
+--	sleep_s (1);
+--
+--	--DISPLAY 3 SECOND COUNTDOWN--
+--	Hub1PelicanCountdown();
+--	
+--	FadeOutMission();
+--	EndMission(W2Hub1st);
+--end
+--
+--
+--
+----COUNTDOWN FUNCTION
+--function Hub1PelicanCountdown()
+--
+--	cinematic_set_title (TITLES.ch_pelican_cnt_start);
+--	--sound_impulse_start(TAG('sound\002_ui\002_ui_hud\002_ui_hud_ingame\002_ui_hud_2d_ingame_missionstart_countdown.sound'), nil, 1);
+--	--sleep_s(1);
+--	for count=3,1, -1 do
+--		cinematic_set_title (TITLES["ch_pelican_cnt_start0"..count]);
+--		CreateThread(audio_missionstart_countdown);
+--		sleep_s(2.1);
+--		
+--	end
+--	cinematic_clear_title (TITLES.ch_pelican_cnt_start);
+--end
+--
+--
+--function cs_plateau_pelican()
+--	--print ("pelican flying");
+--	
+--	--TEMP
+--	if not object_valid ("v_pelican_flight") then
+--		object_create ("v_pelican_flight");
+--		--object_create ("cr_pelican_flight");
+--		--objects_physically_attach (OBJECTS.v_pelican_flight, "door_physics_attach", OBJECTS.cr_pelican_flight, "");
+--		vehicle_set_player_interaction (OBJECTS.v_pelican_flight, "", false, false);
+--	end
+--	vehicle_load_magic (OBJECTS.v_pelican_flight, "", ai_current_squad);
+--
+--	repeat
+--		--print ("hovering");
+--		cs_fly_to_and_face (POINTS.ps_plateau_pelican.p6, POINTS.ps_plateau_pelican.p7)
+----		vehicle_hover (ai_current_squad, true);
+--		sleep_s (10);
+--	until false;
+--	--put fly away here
+--end
